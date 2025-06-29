@@ -1,0 +1,24 @@
+name: 'Execução Manual'
+
+on:
+  workflow_dispach:
+
+jobs:
+  2e2-tests:
+   runs-on: ubunto-latest
+   steps:
+    uses: actions/checkout@v4
+    uses: actions/setup-node@v4
+    with: node-version: 22.x
+
+    name: Instalando Yarn
+    run: npm install -g yarn
+            
+    name: Instalando dependências
+    run: yarn
+            
+    name: instalando Playright
+    run: yarn playright install
+
+    name: executando teste E2E
+    run: yarn run e2e

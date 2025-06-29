@@ -1,2 +1,9 @@
 node_modules
+.stryker-tmp
+reports
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+results.xml
 package-lock.json
