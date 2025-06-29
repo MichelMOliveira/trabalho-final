@@ -1,0 +1,33 @@
+name: Executar Testes JavaScript
+
+on:
+  push:
+    branches:
+      - main 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v4
+        uses: actions/setup-node@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4 
+        with:
+          node-version: '22.x' 
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+            
+      - name: Instalando dependências
+        run: yarn
+            
+      - name: instalando Playright
+        run: yarn playright install
+
+      - name: executando teste E2E
+        run: yarn run e2eit
