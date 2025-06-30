@@ -3,36 +3,33 @@ name: Executar Testes JavaScript
 on:
   push:
     branches:
-      - main 
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
   testes:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+      - name: Configurar Node.js e Yarn
         uses: actions/setup-node@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4 
         with:
-          node-version: '22.x' 
+          node-version: '22.x'
+          cache: 'yarn'        
 
-      - name: Instalando Yarn
-        run: npm install -g yarn
-            
-      - name: Instalando dependências
-        run: yarn
-        working-directory: ./trabalho-final
-            
-      - name: instalando Playright
-        run: yarn playright install
+      - name: Instalando Dependências do Projeto
+        run: yarn install --frozen-lockfile
+        working-directory: trabalho-final
 
-      - name: executando teste E2E
+      - name: Instalando Browsers do Playwright
+        run: npx playwright install
+        working-directory: trabalho-final
+
+      - name: Executando Testes E2E
         run: yarn run e2eit
-        working-directory: ./trabalho-final
+        working-directory: trabalho-final
