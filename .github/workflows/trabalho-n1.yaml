@@ -12,6 +12,9 @@ jobs:
   testes:
     runs-on: ubuntu-latest 
     steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
       - name: Configurar Node.js
         uses: actions/setup-node@v4
 
@@ -25,9 +28,11 @@ jobs:
             
       - name: Instalando dependências
         run: yarn
+        working-directory: ./trabalho-final
             
       - name: instalando Playright
         run: yarn playright install
 
       - name: executando teste E2E
         run: yarn run e2eit
+        working-directory: ./trabalho-final
