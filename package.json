@@ -16,4 +16,5 @@
   "devDependencies": {
     "mocha": "^9.2.2", // Sua versão do Mocha
     "playwright": "^1.43.0"
+  }
 }
