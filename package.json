@@ -1,14 +1,19 @@
 {
   "name": "trabalho-final",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "e2eit": "npx playwright test"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "devDependencies": {
+    "mocha": "^9.2.2", // Sua versão do Mocha
+    "playwright": "^1.43.0"
 }
